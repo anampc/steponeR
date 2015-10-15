@@ -14,7 +14,7 @@ steponeR <- function(files=NULL, target.ratios=NULL, fluor.norm=NULL,
   })
   data0 <- rbind.fill(data0)
   # Change C_ to CT
-  colnames(data0) <- sub(x=colnames(data0), pattern="C_", replacement="CT")
+  colnames(data0) <- sub(x=colnames(data0), pattern="C.*", replacement="CT")
   # Check and remove NTC wells
   ntc <- data0[which(data0$Task=="NTC"), ]
   if(any(!is.na(ntc$CT))) warning("Template detected in NTC: interpret data with caution")
